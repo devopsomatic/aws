@@ -1,6 +1,7 @@
 #!/bin/bash
-mkdir -p /var/log/userdata/debian
-exec 1>/var/log/userdata/debian/docker.log 2>&1
+LOG=/var/log/userdata/debian/$(basename ${0}).log
+mkdir -p $(dirname ${LOG})
+exec 1>${LOG} 2>&1
 date
 set
 set -o verbose
