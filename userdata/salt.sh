@@ -1,6 +1,7 @@
 #!/bin/bash
-mkdir -p /var/log/userdata
-exec 1>/var/log/userdata/salt.log 2>&1
+LOG=/var/log/userdata/$(basename ${0}).log
+mkdir -p $(dirname ${LOG})
+exec 1>${LOG} 2>&1
 date
 set
 set -o verbose
