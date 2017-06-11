@@ -17,7 +17,8 @@ set -o xtrace
 set -o nounset
 
 VERSION=${VERSION:-master}
+DISTRO=${DISTRO:-debian}
 
-for installer in ${@:-salt debian/dev debian/java debian/docker debian/stats}; do
-  curl -sL -o- https://raw.githubusercontent.com/devopsomatic/aws/${VERSION}/userdata/${installer}.sh #| bash -vx -s --
+for installer in ${@:-salt ${DISTRO}/dev ${DISTRO}/java ${DISTRO}/docker ${DISTRO}/stats}; do
+  curl -sL -o- https://raw.githubusercontent.com/devopsomatic/aws/${VERSION}/userdata/${installer}.sh | bash -vx -s --
 done
