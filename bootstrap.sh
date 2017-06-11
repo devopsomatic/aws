@@ -2,6 +2,7 @@
 NOW=$(date +%Y%m%dt%H%M%S)
 UNQ=${NOW}.${RANDOM}
 LOGD=/var/log/userdata
+[ -w ${LOGD} ] || LOGD=${PWD}
 LOG=${LOGD}/${SELFU}.${UNQ}.log
 
 exec 3>&1 4>&2
